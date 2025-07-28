@@ -1,143 +1,156 @@
 // Desc: Footer component for the website
 
-import navigation from '../utils/getNavigation'
-export default function Footer() {
-return (
-    <footer className="mt-20 text-center text-gray-600 bg-gray-100 lg:text-left">
-  <div className="flex items-center justify-center p-6 border-b border-gray-300 lg:justify-between">
-    
-    <div className="flex justify-center">
-      <a href="#!" className="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
-          className="w-2.5" role="img" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 320 512">
-          <path fill="currentColor"
-            d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
-          </path>
-        </svg>
-      </a>
-      <a href="#!" className="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter"
-          className="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path fill="currentColor"
-            d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
-          </path>
-        </svg>
-      </a>
-      <a href="#!" className="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
-          className="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-          <path fill="currentColor"
-            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-          </path>
-        </svg>
-      </a>
-      <a href="#!" className="mr-6 text-gray-600">
-        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in"
-          className="w-3.5" role="img" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512">
-          <path fill="currentColor"
-            d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
-          </path>
-        </svg>
-      </a>
-    </div>
-  </div>
-  <div className="py-10 mx-6 text-center md:text-left">
-    <div className="grid gap-8 grid-1 md:grid-cols-2 lg:grid-cols-4">
-      <div className="">
-        <a href="/">
-            <span className="sr-only">Hygraph Bikes</span>
-            <img
-                className="w-auto h-8 sm:h-10"
-                src="/logo.svg"
-                alt=""
-            />
-            </a>
-        <p className="mt-5" >
-          Your one-stop bike shop
-        </p>
-      </div>
-      <div className="">
-        <h6 className="flex justify-center mb-4 font-semibold uppercase md:justify-start">
-          Products
-        </h6>
-        <ul >
-        {/* {navigation.map((category) => (
-            <li key={category.slug} className="mb-4"><a href={`/category/${category.slug}`} className="text-base font-medium text-gray-500 hover:text-gray-900">
-            {category.name}
-            </a></li>
-        ))} */}
-        </ul>
-      </div>
-      <div className="">
-        <h6 className="flex justify-center mb-4 font-semibold uppercase md:justify-start">
-          Useful links
-        </h6>
-        <p className="mb-4">
-          <a href="#!" className="text-gray-600">Pricing</a>
-        </p>
-        <p className="mb-4">
-          <a href="#!" className="text-gray-600">Settings</a>
-        </p>
-        <p className="mb-4">
-          <a href="#!" className="text-gray-600">Orders</a>
-        </p>
-        <p>
-          <a href="#!" className="text-gray-600">Help</a>
-        </p>
-      </div>
-      <div className="">
-        <h6 className="flex justify-center mb-4 font-semibold uppercase md:justify-start">
-          Contact
-        </h6>
-        <p className="flex items-center justify-center mb-4 md:justify-start">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home"
-            className="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-            <path fill="currentColor"
-              d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z">
-            </path>
-          </svg>
-          Dircksenstraße, Berlin, Germany
-        </p>
-        <p className="flex items-center justify-center mb-4 md:justify-start">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope"
-            className="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z">
-            </path>
-          </svg>
-          info@hygraph.com
-        </p>
-        <p className="flex items-center justify-center mb-4 md:justify-start">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone"
-            className="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z">
-            </path>
-          </svg>
-          + 01 234 567 88
-        </p>
-        <p className="flex items-center justify-center md:justify-start">
-          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="print"
-            className="w-4 mr-4" role="img" xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512">
-            <path fill="currentColor"
-              d="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z">
-            </path>
-          </svg>
-          + 01 234 567 89
-        </p>
-      </div>
-    </div>
-  </div>
-  <div className="p-6 text-center bg-gray-200">
-    <span>© 2022 Copyright Hygraph Bikes</span>
-    
-  </div>
-</footer>
-)
+import { allCategories } from '../utils/getCategories'
+import { getNavigationById } from '../utils/getNavigation'
 
+export default async function Footer() {
+  // Fetch categories for dynamic product links
+  const categories = await allCategories()
+  
+  return (
+    <footer className="bg-gray-900 text-white">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          {/* Company Info */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center mb-6">
+              <img
+                className="w-auto h-10"
+                src="/logo.svg"
+                alt="Hygraph Shop"
+              />
+            </div>
+            <p className="text-gray-300 leading-relaxed mb-6">
+              Your one-stop destination for quality products. We're committed to providing exceptional service and the best shopping experience.
+            </p>
+            
+            {/* Social Media Links */}
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                </svg>
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                </svg>
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                </svg>
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 text-white">Products</h3>
+            <ul className="space-y-3">
+              {categories && categories.length > 0 ? (
+                categories.slice(0, 6).map((category) => (
+                  <li key={category.slug}>
+                    <a 
+                      href={`/category/${category.slug}`} 
+                      className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                    >
+                      {category.categoryName}
+                    </a>
+                  </li>
+                ))
+              ) : (
+                <>
+                  <li><a href="/products" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">All Products</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">New Arrivals</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">Best Sellers</a></li>
+                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">Sale Items</a></li>
+                </>
+              )}
+            </ul>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 text-white">Quick Links</h3>
+            <ul className="space-y-3">
+              <li><a href="/about" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">About Us</a></li>
+              <li><a href="/contact" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">Contact</a></li>
+              <li><a href="/faq" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">FAQ</a></li>
+              <li><a href="/shipping" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">Shipping Info</a></li>
+              <li><a href="/returns" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">Returns</a></li>
+              <li><a href="/privacy" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-6 text-white">Contact Us</h3>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-3">
+                <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <p className="text-gray-300 text-sm">Dircksenstraße, Berlin, Germany</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <div>
+                  <a href="mailto:info@hygraph.com" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                    info@hygraph.com
+                  </a>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <svg className="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <div>
+                  <a href="tel:+49123456788" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
+                    +49 123 456 788
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="border-t border-gray-800 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              © 2024 Hygraph Shop. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm">
+              <a href="/privacy" className="text-gray-400 hover:text-white transition-colors duration-200">
+                Privacy Policy
+              </a>
+              <a href="/terms" className="text-gray-400 hover:text-white transition-colors duration-200">
+                Terms of Service
+              </a>
+              <a href="/cookies" className="text-gray-400 hover:text-white transition-colors duration-200">
+                Cookie Policy
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
 }

@@ -9,53 +9,56 @@ import Link from 'next/link'
 export default async function Navbar() {
   const nav = await getNavigationById('main')
 
-
   return (
-    <Main>
-        <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="/">
-              <span className="sr-only">Hygraph Commerce</span>
+    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+      <Main>
+        <div className="flex items-center justify-between py-4">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Link href="/" className="flex items-center">
               <img
                 className="h-8 w-auto sm:h-10"
                 src="/logo.svg"
-                alt=""
+                alt="Hygraph Commerce"
               />
-            </a>
+            </Link>
           </div>
-          <div className="-my-2 -mr-2 md:hidden">
-            {/* <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-              <span className="sr-only">Open menu</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            </Popover.Button> */}
-          </div>
-           
-  
-          <div className="hidden items-center gap-5 justify-end md:flex md:flex-1 lg:w-0">
-          {nav?.navLink?.map((link) => (
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {nav?.navLink?.map((link) => (
               <Link
                 key={link.id}
                 href={
                   link.url
-                    ? `/${link.url.replace(/^\/+/, '')}` // ensure starts with single /
+                    ? `/${link.url.replace(/^\/+/, '')}`
                     : `/en/${link.page.url.replace(/^\/+/, '')}`
                 }
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                className="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200 relative group"
               >
                 {link.displayText}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-200 group-hover:w-full"></span>
               </Link>
-
             ))}
-            <a href="/cart" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
-            {<ShoppingCartIcon />} Cart
-            </a>
+          </nav>
+
+          {/* Cart and Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            <Link 
+              href="/cart" 
+              className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200"
+            >
+              <ShoppingCartIcon className="h-6 w-6" />
+              <span className="hidden sm:inline">Cart</span>
+            </Link>
             
-          </div>
-          <div className='md:hidden'>
-            <MobileNav nav={nav} />
+            {/* Mobile Navigation */}
+            <div className="md:hidden">
+              <MobileNav nav={nav} />
+            </div>
           </div>
         </div>
-
-    </Main>
+      </Main>
+    </header>
   )
 }
