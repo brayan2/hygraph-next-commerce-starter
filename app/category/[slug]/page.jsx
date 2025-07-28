@@ -17,6 +17,6 @@ export default async function Page({params}) {
             description={category?.description?.raw}
         />
 
-        {category.products && <ProductGrid  products={category.products} />}
+        {category.product && <ProductGrid  products={category.product} />}
     </>)
 }

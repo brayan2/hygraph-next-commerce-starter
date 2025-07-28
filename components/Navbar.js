@@ -4,6 +4,7 @@ import {
 import  { getNavigationById } from '../utils/getNavigation'
 import Main from './Main'
 import MobileNav from './MobileNav'
+import Link from 'next/link'
 
 export default async function Navbar() {
   const nav = await getNavigationById('main')
@@ -31,10 +32,19 @@ export default async function Navbar() {
            
   
           <div className="hidden items-center gap-5 justify-end md:flex md:flex-1 lg:w-0">
-          {nav.navLink.map((link) => (
-              <a key={link.id} href={link.url ? link.url : '/en/' + link.page.url} className="text-base font-medium text-gray-500 hover:text-gray-900">
+          {nav?.navLink?.map((link) => (
+              <Link
+                key={link.id}
+                href={
+                  link.url
+                    ? `/${link.url.replace(/^\/+/, '')}` // ensure starts with single /
+                    : `/en/${link.page.url.replace(/^\/+/, '')}`
+                }
+                className="text-base font-medium text-gray-500 hover:text-gray-900"
+              >
                 {link.displayText}
-              </a>
+              </Link>
+
             ))}
             <a href="/cart" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
             {<ShoppingCartIcon />} Cart

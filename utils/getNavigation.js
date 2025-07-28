@@ -13,7 +13,7 @@ export async function getNavigationById(id) {
           }
           ... on LandingPage {
             id
-            url: link
+            url: slug
           }
           ... on Product {
             id
