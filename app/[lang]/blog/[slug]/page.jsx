@@ -88,6 +88,40 @@ export default async function BlogPostPage({ params }) {
             dangerouslySetInnerHTML={{ __html: post.body.html }}
           />
         )}
+
+        {post.relatedBlogPost?.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50 rounded-xl mt-20">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Related Posts</h2>
+            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+            {post.relatedBlogPost.map((related) => (
+                <div key={related.id} className="bg-white shadow-md rounded-xl overflow-hidden">
+                {related.featuredImage?.url && (
+                    <Image
+                    src={related.featuredImage.url}
+                    alt={related.featuredImage.altText || related.title}
+                    width={400}
+                    height={200}
+                    className="w-full h-48 object-cover"
+                    />
+                )}
+                <div className="p-4">
+                    <h3 className="text-lg font-semibold">{related.title}</h3>
+                    {related.excerpt && (
+                    <p className="text-gray-600 text-sm mt-2">{related.excerpt}</p>
+                    )}
+                    <Link
+                    href={`/${lang}/blog/${related.slug}`}
+                    className="inline-block text-indigo-600 font-medium mt-3"
+                    >
+                    Read More →
+                    </Link>
+                </div>
+                </div>
+            ))}
+            </div>
+        </section>
+        )}
+
       </main>
     </div>
   );

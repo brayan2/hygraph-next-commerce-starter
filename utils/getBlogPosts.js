@@ -18,6 +18,16 @@ export async function getBlogPostBySlug(slug, lang = 'en', preview = false) {
           raw
         }
         publishedAt
+        relatedBlogPost {
+          id
+          title
+          slug
+          excerpt
+          featuredImage {
+            url
+            altText
+          }
+        }
       }
     }
   `;
