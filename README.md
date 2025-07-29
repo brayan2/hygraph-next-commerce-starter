@@ -3,9 +3,9 @@ This project is a federated content demo for Hygraph. It combines content from a
 
 ## Installation methods
 
-Option 1: One-click Deployment 
+### Option 1: One-click Deployment (Vercel)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/hygraph/hygraph-next-commerce-starter)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/hygraph/hygraph-next-commerce-starter)
 
 Option 2: Manual clone
 
