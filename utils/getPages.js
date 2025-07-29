@@ -1,7 +1,14 @@
-import hygraphClient, { gql } from './hygraph-client.js'
-import { ProductGridFragment } from './fragments/productGrid.js'
+import hygraphClient, { gql } from './hygraph-client.js';
+import { ProductGridFragment } from './fragments/productGrid.js';
+import { isBlogPostSlug } from './getBlogPosts.js';
 
-export async function getPageBySlug(slug, lang='en', preview=false) {
+export async function getPageBySlug(slug, lang = 'en', preview = false) {
+  const isBlog = await isBlogPostSlug(slug);
+  if (isBlog) {
+    console.log(`[INFO] Skipping landingPage fetch: "${slug}" is a blog post.`);
+    return null;
+  }
+
   const query = gql`
     query GetSinglePage($slug: String!, $lang: [Locale!]!, $stage: Stage!) {
       landingPage(where: {slug: $slug}, locales: $lang, stage: $stage) {
@@ -50,6 +57,19 @@ export async function getPageBySlug(slug, lang='en', preview=false) {
             ${ProductGridFragment}
           }
         }
+        blogPost {
+          id
+          title
+          slug
+          featuredImage {
+            url
+            width
+            height
+          }
+          excerpt
+        }
+
+
       }
     }
   `
