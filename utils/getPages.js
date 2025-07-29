@@ -5,7 +5,7 @@ import { isBlogPostSlug } from './getBlogPosts.js';
 export async function getPageBySlug(slug, lang = 'en', preview = false) {
   const isBlog = await isBlogPostSlug(slug);
   if (isBlog) {
-    console.log(`[INFO] Skipping landingPage fetch: "${slug}" is a blog post.`);
+  //  console.log(`[INFO] Skipping landingPage fetch: "${slug}" is a blog post.`);
     return null;
   }
 
@@ -80,7 +80,7 @@ export async function getPageBySlug(slug, lang = 'en', preview = false) {
       lang: [lang],
       stage: preview ? 'DRAFT' : 'PUBLISHED'
     })
-    console.log(`[LOG] Landing page slug "${slug}" data:\n`, JSON.stringify(landingPage, null, 2))
+   // console.log(`[LOG] Landing page slug "${slug}" data:\n`, JSON.stringify(landingPage, null, 2))
     return landingPage
   } catch (error) {
     console.log(error)

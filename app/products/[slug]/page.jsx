@@ -1,15 +1,17 @@
 
-import React from 'react';
+import {React}from 'react';
 import { getProductBySlug } from '../../../utils/getProducts'
 import ImageGroup from '../../../components/ImageGroup'
 import Main from '../../../components/Main'
 import { draftMode } from 'next/headers'
 import ProductGrid from '../../../components/ProductGrid'
+import AddToCart from './AddToCart'; 
+import { notFound } from 'next/navigation'
 
 export default async function Page({ params }) {
   const { isEnabled } = draftMode();
   const product = await getProductBySlug(params.slug, isEnabled);
-
+  if (!product) return notFound();
   return (
     <>
       <Main>
@@ -55,19 +57,8 @@ export default async function Page({ params }) {
 
               {/* Add to Cart Button */}
               <div className="space-y-4">
-                <button
-                  type="submit"
-                  className="w-full bg-indigo-600 text-white py-4 px-8 rounded-lg font-semibold text-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200"
-                >
-                  Add to Cart
-                </button>
-                
-                <button
-                  type="button"
-                  className="w-full bg-white text-indigo-600 py-4 px-8 rounded-lg font-semibold text-lg border-2 border-indigo-600 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200"
-                >
-                  Add to Wishlist
-                </button>
+              <AddToCart product={product} />
+
               </div>
 
               {/* Product Variants */}

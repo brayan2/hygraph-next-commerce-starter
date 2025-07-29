@@ -1,8 +1,17 @@
-"use client";
-import { useState } from "react";
-export default function MobileNav(props) {
-  // set opener stuff
+'use client';
+import { useState } from 'react';
+
+export default function MobileNav({ nav }) {
   const [open, setOpen] = useState(false);
+  const links = nav?.navLink || [];
+
+  const buildLinkHref = (link) => {
+    if (link.url) return `/${link.url.replace(/^\/+/, '')}`;
+    if (link.page?.productSlug) return `/products/${link.page.productSlug}`;
+    if (link.page?.url) return `/en/${link.page.url.replace(/^\/+/, '')}`;
+    return '#';
+  };
+
   return (
     <>
       <div className="lg:hidden">
@@ -20,12 +29,18 @@ export default function MobileNav(props) {
           </svg>
         </button>
       </div>
-      <div className={`${open ? "" : "hidden"} relative z-50`}>
+
+      <div className={`${open ? '' : 'hidden'} relative z-50`}>
         <div
           onClick={() => setOpen(false)}
           className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-50"
         ></div>
-        <nav className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-80 dark:bg-gray-800 ${open ? 'translate-x-0': '-translate-x-full'}`}>
+
+        <nav
+          className={`fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-80 dark:bg-gray-800 ${
+            open ? 'translate-x-0' : '-translate-x-full'
+          }`}
+        >
           <button onClick={() => setOpen(false)} className="navbar-close">
             <svg
               className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
@@ -42,12 +57,17 @@ export default function MobileNav(props) {
               ></path>
             </svg>
           </button>
+
           <ul className="mt-10">
-            <li className="my-5"><a href="/">Home</a></li>
-            {props.nav.navLink.map((link) => (
+            <li className="my-5">
+              <a href="/" className="text-base font-medium text-gray-500 hover:text-gray-900">
+                Home
+              </a>
+            </li>
+            {links.map((link) => (
               <li key={link.id} className="my-5">
                 <a
-                  href={link.url ? link.url : "/en/" + link.page.url}
+                  href={buildLinkHref(link)}
                   className="text-base font-medium text-gray-500 hover:text-gray-900"
                 >
                   {link.displayText}

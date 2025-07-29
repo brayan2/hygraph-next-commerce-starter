@@ -1,13 +1,38 @@
-import {
-  ShoppingCartIcon
-} from '@heroicons/react/24/outline'
-import  { getNavigationById } from '../utils/getNavigation'
-import Main from './Main'
-import MobileNav from './MobileNav'
-import Link from 'next/link'
+'use client';
 
-export default async function Navbar() {
-  const nav = await getNavigationById('main')
+import { useEffect, useState } from 'react';
+import { useCart } from './CartContext';
+import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+import Main from './Main';
+import MobileNav from './MobileNav';
+import Link from 'next/link';
+import { getNavigationById } from '../utils/getNavigation';
+
+export default function NavbarClient({ nav: initialNav }) {
+  const [nav, setNav] = useState(initialNav || null);
+  const { cartCount } = useCart();
+
+  useEffect(() => {
+    // Only fetch if not passed from server
+    if (!initialNav) {
+      async function fetchNav() {
+        try {
+          const navigation = await getNavigationById('main');
+          setNav(navigation);
+        } catch (error) {
+          console.error('Failed to fetch navigation:', error);
+        }
+      }
+      fetchNav();
+    }
+  }, [initialNav]);
+
+  const buildLinkHref = (link) => {
+    if (link.url) return `/${link.url.replace(/^\/+/, '')}`;
+    if (link.page?.productSlug) return `/products/${link.page.productSlug}`;
+    if (link.page?.url) return `/en/${link.page.url.replace(/^\/+/, '')}`;
+    return '#';
+  };
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
@@ -29,11 +54,7 @@ export default async function Navbar() {
             {nav?.navLink?.map((link) => (
               <Link
                 key={link.id}
-                href={
-                  link.url
-                    ? `/${link.url.replace(/^\/+/, '')}`
-                    : `/en/${link.page.url.replace(/^\/+/, '')}`
-                }
+                href={buildLinkHref(link)}
                 className="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200 relative group"
               >
                 {link.displayText}
@@ -44,14 +65,14 @@ export default async function Navbar() {
 
           {/* Cart and Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <Link 
-              href="/cart" 
+            <Link
+              href="/cart"
               className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200"
             >
               <ShoppingCartIcon className="h-6 w-6" />
-              <span className="hidden sm:inline">Cart</span>
+              <span className="hidden sm:inline">Cart ({cartCount})</span>
             </Link>
-            
+
             {/* Mobile Navigation */}
             <div className="md:hidden">
               <MobileNav nav={nav} />
@@ -60,5 +81,5 @@ export default async function Navbar() {
         </div>
       </Main>
     </header>
-  )
+  );
 }

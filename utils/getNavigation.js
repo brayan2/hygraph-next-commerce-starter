@@ -29,6 +29,7 @@ export async function getNavigationById(id) {
   `
   try {
     const {navigation} = await client.request(query, {id})
+
     return navigation
   } catch (error) {
     console.log(error)
