@@ -1,9 +1,7 @@
 import Main from "./Main";
-import Link from 'next/link';
+import Link from "next/link";
 
 const Product = ({ product }) => {
-  if (!product) return null;
-
   const thumbnail =
     product?.productImage?.[0] ??
     product?.localizations?.[0]?.productImage?.[0] ??
@@ -47,7 +45,35 @@ const Product = ({ product }) => {
   );
 };
 
-export default function ProductGrid({ products, title }) {
+const Pagination = ({ total, currentPage, basePath }) => {
+  const PRODUCTS_PER_PAGE = 12;
+  const totalPages = Math.ceil(total / PRODUCTS_PER_PAGE);
+
+  if (totalPages <= 1) return null;
+
+  return (
+    <div className="flex justify-center space-x-2 mt-10 mb-10">
+      {Array.from({ length: totalPages }, (_, i) => {
+        const page = i + 1;
+        const isActive = page === currentPage;
+
+        return (
+          <Link
+            key={page}
+            href={`${basePath}?page=${page}`}
+            className={`px-4 py-2 rounded-md text-sm border ${
+              isActive ? 'bg-black text-white' : 'bg-white text-black'
+            }`}
+          >
+            {page}
+          </Link>
+        );
+      })}
+    </div>
+  );
+};
+
+export default function ProductGrid({ products, title, total = 0, currentPage = 1, basePath = "" }) {
   const validProducts = Array.isArray(products) ? products.filter(Boolean) : [];
 
   return (
@@ -69,6 +95,7 @@ export default function ProductGrid({ products, title }) {
             </div>
           )}
         </div>
+        <Pagination total={total} currentPage={currentPage} basePath={basePath} />
       </div>
     </Main>
   );
